@@ -6,9 +6,10 @@
     fwrite($myfile, "\xEF\xBB\xBF".$json_str); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
   
     $sender_userid = $json_obj->events[0]->source->userId; //取得訊息發送者的id
+    $sender_type = $json_obj->events[0]->message->type; //取得訊息類型
     $sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
 
-    if($sender_txt != "" && $sender_txt != NULL){
+    if($sender_type == "text"){
         $response = array (
             "to" => $sender_userid,
             "messages" => array (
