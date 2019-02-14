@@ -241,7 +241,7 @@
             );
         } elseif($sender_txt == "快速回覆"){
             $response = array (
-                "replyToken" => $sender_replyToken,
+                "to" => $sender_userid,
                 "messages" => array (
                     array (
                         "type" => "text",
