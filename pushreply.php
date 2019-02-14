@@ -78,7 +78,7 @@
                     )
                 )
             );
-        } elseif($sender_text == "flex"){
+        } elseif($sender_txt == "flex"){
             $msg_json = '{
                 "type": "bubble",
                 "hero": {
