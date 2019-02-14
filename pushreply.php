@@ -10,17 +10,7 @@
 
     if($sender_type == "text"){
         $sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
-        if($sender_txt != "範本"){
-            $response = array (
-                "to" => $sender_userid,
-                "messages" => array (
-                    array (
-                        "type" => "text",
-                        "text" => "Hello. You said: ". $sender_txt
-                    )
-                )
-            );
-        } else {
+        if($sender_txt == "按鈕") {
             $response = array (
                 "to" => $sender_userid,
                 "messages" => array (
@@ -57,7 +47,43 @@
                     )
                 )
             );
-        }
+        } elseif($sender_txt == "是否") {
+            $response = array (
+                "to" => $sender_userid,
+                "messages" => array (
+                    array (
+                        "type" => "template",
+                        "altText" => "BUTTON",
+                        "template" => array (
+                            "type" => "confirm",
+                            "text" => "是否！？",
+                            "actions" => array (
+                                array (
+                                    "type" => "message",
+                                    "label" => "是",
+                                    "text" => "yes"
+                                ),
+                                array (
+                                    "type" => "message",
+                                    "label" => "否",
+                                    "text" => "no"
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        } else {
+            $response = array (
+                "to" => $sender_userid,
+                "messages" => array (
+                    array (
+                        "type" => "text",
+                        "text" => "Hello. You said: ". $sender_txt
+                    )
+                )
+            );
+        } 
     }
     elseif($sender_type == "sticker"){
         $sticker_id = $json_obj->events[0]->message->stickerId;
