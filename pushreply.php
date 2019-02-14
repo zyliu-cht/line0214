@@ -34,6 +34,11 @@
                                     "text" => "This is text"
                                 ),
                                 array (
+                                    "type" => "uri",
+                                    "label" => "外站",
+                                    "uri" => "http"
+                                ),
+                                array (
                                     "type" => "datetimepicker",
                                     "label" => "Select date",
                                     "data" => "storeId=12345",
