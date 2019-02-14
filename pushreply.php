@@ -33,6 +33,19 @@
             )
         );  //"type":"sticker","id":"9352799347319","stickerId":"21069261","packageId":"9601"
     }
+//"type":"image","id":"9352825640135","contentProvider":{"type":"line"}}
+    elseif($sender_type == "image"){
+        $image_id = $json_obj->events[0]->message->id;
+        $response = array (
+            "to" => $sender_userid,
+            "messages" => array (
+                array (
+                    "type" => "text",
+                    "text" => "Hello, you've post an image(". $image_id. ")!"
+                )
+            )
+        );
+    }
     else
     {
         $response = array (
