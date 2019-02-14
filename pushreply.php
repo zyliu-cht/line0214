@@ -3,7 +3,7 @@
     $json_obj = json_decode($json_str); //轉成json格式
   
     $myfile = fopen("log.txt", "w+") or die("Unable to open file!"); //設定一個log.txt來印訊息
-    //fwrite($myfile, "\xEF\xBB\xBF".$json_str); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
+    fwrite($myfile, "\xEF\xBB\xBF".$json_str); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
   
     $sender_userid = $json_obj->events[0]->source->userId; //取得訊息發送者的id
     $sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
@@ -32,7 +32,7 @@
         );
     }
   
-    fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
+    //fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
     $header[] = "Content-Type: application/json";
     $header[] = "Authorization: Bearer XZGnhd1WjmVz94+VelWCZ+tJYhcm7UIMqCEjWLyTVXXzjQSbfscxyiIW6EL2HV7U0DYs9xPGqn7wZ75Oq3iL+pTCX14VTQRHLS5bclwN3vC/o1auuiK7w5PLgJ2PiZVx19Bzpbg6F7wm+j0jRkXB2wdB04t89/1O/w1cDnyilFU=";
     $ch = curl_init("https://api.line.me/v2/bot/message/push");
