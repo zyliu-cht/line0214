@@ -36,7 +36,7 @@
                                 array (
                                     "type" => "uri",
                                     "label" => "外站",
-                                    "uri" => "http"
+                                    "uri" => "https://google.com.tw/"
                                 ),
                                 array (
                                     "type" => "datetimepicker",
