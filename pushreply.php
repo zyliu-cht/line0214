@@ -7,16 +7,30 @@
   
     $sender_userid = $json_obj->events[0]->source->userId; //取得訊息發送者的id
     $sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
-  
-    $response = array (
-        "to" => $sender_userid,
-        "messages" => array (
-            array (
-                "type" => "text",
-                "text" => "Hello. You said: ". $sender_txt
+
+    if($sender_txt != "" && $sender_txt != NULL){
+        $response = array (
+            "to" => $sender_userid,
+            "messages" => array (
+                array (
+                    "type" => "text",
+                    "text" => "Hello. You said: ". $sender_txt
+                )
             )
-        )
-    );
+        );
+    }
+    else
+    {
+        $response = array (
+            "to" => $sender_userid,
+            "messages" => array (
+                array (
+                    "type" => "text",
+                    "text" => "I dont understand what you have done!"
+                )
+            )
+        );
+    }
   
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($response)); //在字串前面加上\xEF\xBB\xBF轉成utf8格式
     $header[] = "Content-Type: application/json";
