@@ -10,15 +10,54 @@
 
     if($sender_type == "text"){
         $sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
-        $response = array (
-            "to" => $sender_userid,
-            "messages" => array (
-                array (
-                    "type" => "text",
-                    "text" => "Hello. You said: ". $sender_txt
+        if($sender_txt != "範本"){
+            $response = array (
+                "to" => $sender_userid,
+                "messages" => array (
+                    array (
+                        "type" => "text",
+                        "text" => "Hello. You said: ". $sender_txt
+                    )
                 )
-            )
-        );
+            );
+        } else {
+            $response = array (
+                "to" => $sender_userid,
+                "messages" => array (
+                    array (
+                        "type" => "template",
+                        "altText" => "BUTTON",
+                        "template" => array (
+                            "type" => "buttons",
+                            "thumbnailImageUrl" => "https://www.w3schools.com/css/paris.jpg",
+                            "title" => "Menu",
+                            "text" => "Please select",
+                            "actions" => array (
+                                array (
+                                    "type" => "postback",
+                                    "label" => "Buy",
+                                    "data" => "action=buy&itemid=123"
+                                ),
+                                array (
+                                    "type" => "message",
+                                    "label" => "Return",
+                                    "text" => "This is text"
+                                ),
+                                array (
+                                    "type" => "datetimepicker",
+                                    "label" => "Select date",
+                                    "data" => "storeId=12345",
+                                    "mode" => "datetime",
+                                    "initial" => "2017-12-25t00:00",
+                                    "max" => "2018-01-24t23:59",
+                                    "min" => "2017-12-25t00:00"
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
     }
     elseif($sender_type == "sticker"){
         $sticker_id = $json_obj->events[0]->message->stickerId;
