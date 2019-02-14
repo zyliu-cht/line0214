@@ -7,9 +7,9 @@
   
     $sender_userid = $json_obj->events[0]->source->userId; //取得訊息發送者的id
     $sender_type = $json_obj->events[0]->message->type; //取得訊息類型
-    $sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
 
     if($sender_type == "text"){
+        $sender_txt = $json_obj->events[0]->message->text; //取得訊息內容
         $response = array (
             "to" => $sender_userid,
             "messages" => array (
@@ -19,6 +19,19 @@
                 )
             )
         );
+    }
+    elseif($sender_type == "sticker"){
+        $sticker_id = $json_obj->events[0]->message->stickerId;
+        $package_id = $json_obj->events[0]->message->packageId;
+        $response = array (
+            "to" => $sender_userid,
+            "messages" => array (
+                array (
+                    "type" => "text",
+                    "text" => "Hello. You post: stickerId=". $sticker_id. ", packageId=". $package_id
+                )
+            )
+        );  //"type":"sticker","id":"9352799347319","stickerId":"21069261","packageId":"9601"
     }
     else
     {
