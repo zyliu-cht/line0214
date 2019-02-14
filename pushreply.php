@@ -239,6 +239,53 @@
                     )
                 )
             );
+        } elseif($sender_txt == "快速回覆"){
+            $response = array (
+                "replyToken" => $sender_replyToken,
+                "messages" => array (
+                    array (
+                        "type" => "text",
+                        "text" => "請試用quick replies功能",
+                        "quickReply" => array (
+                            "items" => array (
+                                array (
+                                    "type" => "action",
+                                    "imageUrl" => "https://sporzfy.com/chtuser1/apple.png",
+                                    "action" => array (
+                                        "type" => "message",
+                                        "label"=> "Apple",
+                                        "text" => "這是一個Apple"
+                                    )
+                                ),
+                                array (
+                                    "type" => "action",
+                                    "imageUrl" => "https://sporzfy.com/chtuser1/placeholder.png",
+                                    "action" => array (
+                                        "type" => "location",
+                                        "label"=> "請選擇位置"
+                                    )
+                                ),
+                                array (
+                                    "type" => "action",
+                                    "imageUrl" => "https://sporzfy.com/chtuser1/camera.png",
+                                    "action" => array (
+                                        "type" => "camera",
+                                        "label"=> "啟動相機"
+                                    )
+                                ),
+                                array (
+                                    "type" => "action",
+                                    "imageUrl" => "https://sporzfy.com/chtuser1/picture.png",
+                                    "action" => array (
+                                        "type" => "cameraRoll",
+                                        "label"=> "啟動相簿"
+                                    )
+                                )
+                            )
+                        )	
+                    )
+                )
+            );
         } else {
             $response = array (
                 "to" => $sender_userid,
