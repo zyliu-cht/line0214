@@ -13,7 +13,7 @@
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Authorization: Bearer XZGnhd1WjmVz94+VelWCZ+tJYhcm7UIMqCEjWLyTVXXzjQSbfscxyiIW6EL2HV7U0DYs9xPGqn7wZ75Oq3iL+pTCX14VTQRHLS5bclwN3vC/o1auuiK7w5PLgJ2PiZVx19Bzpbg6F7wm+j0jRkXB2wdB04t89/1O/w1cDnyilFU='
+        'Authorization: Bearer gd1gyH+Pc5TROu9ku5u/5tDvFnffsU8nXU69zXuhTgE0dIS5nVGmx9Js8PwijeUqgFuwWXzyJ14/N5FUmp/UXsmSJbUsxMGA6AW1gozlf6cbEgSGLiC02BEaRa5wUSqE7df8FOANP1WjPW8Mh/TgtwdB04t89/1O/w1cDnyilFU='
     ));
     $json_content = curl_exec($ch);
     curl_close($ch);
@@ -40,7 +40,7 @@
         )
     );
     fwrite($myfile, "\xEF\xBB\xBF".json_encode($post_data));
-    $ch = curl_init('https://vision.googleapis.com/v1/images:annotate?key=720e9a3725659fc12c1d7e38ec272f367bb569da');                                                                      
+    $ch = curl_init('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBJH3w6aTjoIBYhCh8GiI5byZ0Z-Q88cfg');                                                                      
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));                                                                  
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
